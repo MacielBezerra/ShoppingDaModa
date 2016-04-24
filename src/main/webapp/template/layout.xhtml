@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html;" />
+	<!-- Referenciando o arquivo CSS -->
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/css/menu.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/css/dataTable.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/css/mensagens.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/css/cadastroRoupa.css" />
+	<title>Página Inicial</title>
+</h:head>
+<h:body>
+	<div id="container">
+		<div id="cabecalho">
+			<ui:insert name="cabecalho">
+				<ui:include src="cabecalho.xhtml" />
+			</ui:insert>
+		</div>
+		<div id="menu">
+			<ui:insert name="menu">
+				<ui:include src="menu.xhtml"/>
+			</ui:insert>
+		</div>
+		<div id="corpo">
+			<ui:insert name="corpo">
+			</ui:insert>
+		</div>
+		<div id="rodape">
+			<ui:insert name="rodape">
+				<ui:include src="rodape.xhtml" />
+			</ui:insert>
+		</div>
+	</div>	
+	<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+    	<p:graphicImage value="../image/ajaxloadingbar.gif" />
+	</p:dialog>
+	<p:outputPanel id="panel" autoUpdate="true">
+		<p:dialog id="dialogo" widgetVar="dialogo" dynamic="false"
+			maximizable="false" resizable="false" hideEffect="fade"
+			showEffect="fade" modal="true" height="70" width="505"
+			position="center" minimizable="false" draggable="false"
+			rendered="#{not empty facesContext.messageList}" visible="true">
+			<p:messages id="mensagem" globalOnly="false" />
+		</p:dialog>
+	</p:outputPanel>
+</h:body>
+</html>

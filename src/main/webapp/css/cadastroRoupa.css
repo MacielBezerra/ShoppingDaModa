@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+body {
+	
+}
+.ui-inputfield{
+	background-color: white;
+	width: 180px;
+}
+.ui-selectonemenu .ui-selectonemenu-trigger{
+	background: #e8e8e8;
+}
+.ui-button-icon-only .ui-button-text{
+	background: #e8e8e8;
+}
+.ui-datepicker table{
+	background-color: white; 
+}

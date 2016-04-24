@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<script language="javascript" src="javaScript/calendar.js">
+		
+	</script>
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="corpo">
+			<div id="fieldset">
+				<legend style="color: red; margin-top: 18px; font-size: 32px; margin-left: 10px">Cadastro de Roupa</legend>
+				<fieldset
+					style="height: 348px; margin-top: 25px; border: 1px solid #DCDCDC;">
+					<legend style="color: gray; font-size: 20px;">Dados da Mercadoria</legend>
+					<div id="form">
+						<h:form id="cadastro_roupa" style="margin-top:20px;">
+							<p:outputLabel style="margin-top:0px" id="tipoLabel" value="Categoria:" />
+							<p:selectOneMenu style="margin-left:68px;margin-top:-2px;position:absolute" id="tipo" label="">
+								<f:selectItem itemLabel="Selecione uma categoria" itemValue="" noSelectionOption="true" />
+								<f:selectItem itemLabel="Bermuda" itemValue="1" />
+								<f:selectItem itemLabel="Calça" itemValue="1" />
+								<f:selectItem itemLabel="Camisa" itemValue="1" />
+								<f:selectItem itemLabel="Calçinha" itemValue="1" />
+								<f:selectItem itemLabel="Cueca" itemValue="1" />
+								<f:selectItem itemLabel="Meia" itemValue="1" />
+							</p:selectOneMenu>
+							<br/>
+							<p:outputLabel style="margin-top:0px;margin-top:25px;position:absolute" id="tamanhoLabel" value="Tamanho:" />
+							<p:selectOneMenu style="margin-left:148px;margin-top:20px;position:absolute" id="tamanho" label="">
+								<f:selectItem itemLabel="Selecione um tamanho" itemValue="" noSelectionOption="true" />
+								<f:selectItem itemLabel="1 ano" itemValue="1" />
+								<f:selectItem itemLabel="2 anos" itemValue="1" />
+								<f:selectItem itemLabel="3 anos" itemValue="1" />
+								<f:selectItem itemLabel="4 anos" itemValue="1" />
+								<f:selectItem itemLabel="5 anos" itemValue="1" />
+								<f:selectItem itemLabel="6 anos" itemValue="1" />
+								<f:selectItem itemLabel="7 anos" itemValue="1" />
+								<f:selectItem itemLabel="8 anos" itemValue="1" />
+								<f:selectItem itemLabel="9 anos" itemValue="1" />
+								<f:selectItem itemLabel="10 anos" itemValue="1" />
+								<f:selectItem itemLabel="12 anos" itemValue="1" />
+								<f:selectItem itemLabel="14 anos" itemValue="1" />
+								<f:selectItem itemLabel="16 anos" itemValue="1" />
+								<f:selectItem itemLabel="PP" itemValue="1" />
+								<f:selectItem itemLabel="P" itemValue="1" />
+								<f:selectItem itemLabel="M" itemValue="1" />
+								<f:selectItem itemLabel="G" itemValue="1" />
+								<f:selectItem itemLabel="GG" itemValue="1" />
+							</p:selectOneMenu>
+							<p:outputLabel value="Gênero:" style="margin-top:70px;position:absolute"/>
+							<p:selectOneMenu style="margin-left:148px;margin-top:65px;position:absolute" id="genero" label="">
+								<f:selectItem itemLabel="Selecione um gênero" itemValue="" noSelectionOption="true" />
+								<f:selectItem itemLabel="Masculino" itemValue="1" />
+								<f:selectItem itemLabel="Feminino" itemValue="1" />
+							</p:selectOneMenu>
+							<p:outputLabel value="Valor Compra:  R$" style="margin-top:115px;position:absolute"/>
+							<p:inputText style="margin-left:150px;margin-top:110px;position:absolute;background-color:white"/>
+							<p:outputLabel value="Valor Venda:  R$" style="margin-top:158px;position:absolute"/>
+							<p:inputText style="margin-left:148px;margin-top:152px;position:absolute;background-color:white"/>
+							<p:outputLabel value="Quantidade:" style="margin-top:201px;position:absolute"/>
+							<p:inputText style="margin-left:148px;margin-top:192px;position:absolute;background-color:white"/>
+							<p:outputLabel value="Marca:" style="margin-top:238px;position:absolute"/>
+							<p:inputText style="margin-left:148px;margin-top:230px;position:absolute;background-color:white"/>
+							<p:outputLabel value="Data do Cadastro:" style="margin-top:-19px;position:absolute;margin-left:440px"/>
+							<p:calendar id="data" locale="pt_BR" showOn="button" style="background-color:white; margin-top:-26px;position:absolute;margin-left:590px" />
+							<p:commandButton value="Salvar"
+								actionListener="#{clienteBean.salvar(clienteBean.cliente)}"
+								onclick="PF('dialog').show();"
+								style="margin-left:1228px;margin-top:310px;color:white; height:40px;position:absolute;background:#FF0000">
+							</p:commandButton>
+							<p:dialog widgetVar="dialog" dynamic="false" maximizable="false"
+								resizable="false" hideEffect="fade" showEffect="fade"
+								modal="true" height="70" position="center" minimizable="false"
+								draggable="false">
+								<p:messages showDetail="true" autoUpdate="true"
+									globalOnly="false" />
+							</p:dialog>
+						</h:form>
+					</div>
+				</fieldset>
+				<p:outputLabel value="*"
+					style="color:red; font-size:18px; position:absolute;margin-top:-20px;margin-left:20px;" />
+				<p:outputLabel value="( ) Campo Obrigatório!"
+					style="font-size:16px; position:absolute;margin-top:-22px;margin-left:16px;" />
+			</div>
+			<p:commandButton value="Cancelar"
+				action="/template/layout.jsf?faces-redirect=true"
+				style="margin-left:1125px;margin-top:14px;color:gray; height:40px; background:F0F0F0" />
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

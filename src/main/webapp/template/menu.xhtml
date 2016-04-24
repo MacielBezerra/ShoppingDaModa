@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+<h:head>
+</h:head> 
+<h:body> 
+	<f:view>
+		<ui:composition>
+			<h:form>
+				<p:menubar style="min-width:1337px;">
+					<p:menuitem value="Página Inicial" action="#{clienteBean.limparCampos}" url="/template/layout.xhtml" icon="ui-icon-home">
+					</p:menuitem>
+					<p:submenu label="Gerenciar Cliente" style="color:white!important;height:30px" icon="ui-icon-person">
+						<p:menuitem value="Cadastrar Cliente" actionListener="#{clienteBean.limparCampos}" action="/cadastro/cadastro.jsf?faces-redirect=true" ajax="false" id="menuitem">
+						</p:menuitem>
+						<p:menuitem value="Listar Clientes" url="/cadastro/listaClientes.xhtml">
+						</p:menuitem>
+					</p:submenu>
+					<p:submenu label="Gerenciar Estoque" style="color:white!important;height:30px" icon="ui-icon-note">
+						<p:menuitem value="Cadastrar Mercadoria" id="mercadoria" url="/manter_estoque/cadastrar_mercadoria.xhtml">
+						</p:menuitem>
+						<p:menuitem value="Listar Mercadorias" url="">
+						</p:menuitem>
+					</p:submenu>
+					<p:submenu label="Vendas" style="color:white!important;height:30px" icon="ui-icon-cart">
+						<p:menuitem value="Ralizar uma nova Venda" id="venda" url="">
+						</p:menuitem>
+					</p:submenu>
+				</p:menubar>
+			</h:form>
+		</ui:composition>
+	</f:view>		
+</h:body> 
+</html>

@@ -1,0 +1,39 @@
+@CHARSET "utf-8";
+<!--Classes CSS -->
+body {
+	
+}
+.ui-menubar {
+	height: 38px;
+	margin-left: -9px;
+	margin-top: 80px;
+    background: #000 !important; 
+}
+.ui-menuitem{
+	color: black;
+}
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon{
+	color: black;
+}
+.ui-menubar .ui-menuitem-link{
+    margin-top: 4px;	
+	color: white;
+}
+.ui-menubar .ui-menuitem a:hover {
+	background: red;
+	height: 16px;
+}
+.ui-menubar .ui-state-hover{
+	background: red;
+}
+.ui-widget-content .ui-shadow{
+	background: black; 	
+}
+.ui-menu .ui-menu-parent .ui-menu-child{
+	margin-top: 7.2px;
+	padding: 0.3em;
+	outline: 0;
+	display:none;
+	line-height: 1.3;
+	list-style: none;
+}

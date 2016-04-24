@@ -1,0 +1,94 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	
+}
+.ui-messages-info{
+	background-color: #B4EEB4;
+	border-color: none;
+}
+.ui-messages-info-summary{
+	color: #228B22;
+	text-align: center;
+	margin-left: 70px;
+} 
+.ui-messages-error-icon{
+	width: 26px;
+	height: 26px;
+}
+
+.ui-messages-error-summary{
+	margin-left:0px;
+}
+
+.ui-messages-info-icon{
+	width: 0px;
+	height: 0px;
+	margin-left: 50px;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-confirmdialog-no{
+	background: #DCDCDC;
+	color: #696969;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-confirmdialog-yes{
+	background: red;
+	color: white;
+}
+.ui-confirm-dialog-message{
+	color: #696969;
+	font-size: 20px;
+	font: larger;
+}
+.ui-helper-clearfix{
+	background: #FFFFF0;
+	border-color: #EEEEE0;
+}
+.ui-widget-content .ui-corner-top{
+	background: #FFFFF0;
+	color: white;
+}
+.ui-confirm-dialog {
+	background: #FFFFF0;
+}
+.ui-confirm-dialog-severity {
+	margin-top: 3px;
+	color: yellow;
+}
+.ui-growl-image{
+	height: 0px;
+	width: 0px;
+}
+.ui-growl-item-container{
+	background: #b94a48;
+	margin-top: 300px;
+	position: absolute;
+	margin-left: -500px;
+}
+.ui-confirm-dialog-severity{
+	width: 0px;
+	height: 0px;
+}
+.ui-growl-title{
+	font-size:0px;
+	border: none;
+}
+.ui-messages-fatal-summary{
+	font-size: 17px;
+}
+.ui-messages-fatal{
+	width: 450px;
+	height: 20px;
+	border: none;
+}
+.ui-dialog-titlebar {
+	font-size: 0px;
+	border: none; 
+	background-color: white;
+}
+.ui-fieldset-legend {
+	background-color: red;
+}
+
+
+

@@ -1,0 +1,45 @@
+@CHARSET "ISO-8859-1";
+body {
+	
+}
+.ui-state-default{
+	background-color: #CCCCCC;
+}
+.ui-paginator-bottom{
+	background-color: #CCCCCC;
+}
+.ui-datatable-tablewrapper{
+	background-color: #DCDCDC;
+}
+.ui-widget-content .ui-datatable-odd{
+	background-color: white;
+	border-width: none !important;
+	border-color: white;
+}
+.ui-widget-content .ui-datatable-even{
+	border-color: white;
+}
+.ui-column-filter{
+	background-color: white;
+	height: 20px;
+}
+.ui-datatable .ui-expanded-row {
+    border-bottom:0px none;
+    border-width: 0px;
+}
+.ui-filter-column{
+	border-color: #DCDCDC;
+}
+.ui-state-default{
+	border-color: #DCDCDC;
+}
+.ui-paginator-bottom{
+	border-color: #DCDCDC;  
+}
+.ui-inputfield .ui-inputmask .ui-state-default{
+	font-style: italic;
+}
+
+
+
+

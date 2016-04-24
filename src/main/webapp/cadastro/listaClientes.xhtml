@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="corpo">
+			<fieldset
+				style="height: 348px; margin-top: 50px; border: 1px solid #DCDCDC;">
+				<legend style="color: red; font-size: 25px;">Lista de Clientes</legend>
+				<h:form>
+					<p:dataTable id="listaUsuario" paginator="true"
+						paginatorPosition="bottom" rows="5"
+						emptyMessage="Não há clientes cadastrados"
+						style="margin-top:20px; font-size:18px; font-style: none; text-align:center"
+						var="cli" value="#{clienteBean.listarClientes()}">
+						<p:column id="nome" rendered="true" headerText="Nome"
+							filterBy="#{cli.nome}" filterMatchMode="contains">
+							<h:outputText value="#{cli.nome}" />
+						</p:column>
+						<p:column headerText="Telefone">
+							<h:outputText value="#{cli.telefone}" />
+						</p:column>
+						<p:column headerText="Celular">
+							<h:outputText value="#{cli.celular}" />
+						</p:column>
+						<p:column headerText="Email">
+							<h:outputText value="#{cli.email}" />
+						</p:column>
+						<p:column headerText="Cidade">
+							<h:outputText value="#{cli.endereco.cidade}" />
+						</p:column>
+							<p:column headerText="Estado">
+							<h:outputText value="#{cli.endereco.estado.sigla}" />
+						</p:column>
+						<p:column headerText="Ações">
+							<p:commandButton action="#{clienteBean.paginaEditar()}"
+								style="height:30px;width:30px;text-align:center;align:center"
+								icon="ui-icon-pencil">
+								<f:setPropertyActionListener target="#{clienteBean.cliente}"
+									value="#{cli}" />
+							</p:commandButton>
+							<p:commandButton action="#{clienteBean.deletar(cli)}"
+								update="listaUsuario"
+								style="height:30px;width:30px;text-align:center;align:center"
+								icon="ui-icon-trash">
+								<p:confirm
+									message="Você deseja realmente excluir o cliente?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" style="margin-left:260px;" />
+								<p:commandButton value="Sim" type="button" update="nome"
+									styleClass="ui-confirmdialog-yes" style="margin-left:6px;"/>
+							</p:confirmDialog>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</fieldset>
+			<p:commandButton value="Cancelar" action="/template/layout.jsf?faces-redirect=true"
+				style="margin-left:1235px;margin-top:13px;color:gray;height:40px;background:F0F0F0;" />
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
