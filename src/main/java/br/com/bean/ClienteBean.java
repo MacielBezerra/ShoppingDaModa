@@ -52,6 +52,7 @@ public class ClienteBean {
 		if(cliente_auxiliar.equals(null)){
 			return null;
 		}else{
+			//git teste
 			clienteDao.atualizar(cliente);
 			limparCampos();
 		}
