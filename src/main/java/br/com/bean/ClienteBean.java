@@ -11,7 +11,7 @@ import br.com.excecao.GenericThrowable;
 import br.com.messages.Mensagem;
 
 public class ClienteBean {
-	
+
 	private Cliente cliente;
 	private Mensagem mensagem;
 	private DAOCliente<Cliente> clienteDao;
@@ -19,7 +19,7 @@ public class ClienteBean {
 	private DAOEstado estadoDAO;
 	private Endereco endereco;
 	private Estado estado;
-	
+
 	public ClienteBean() throws GenericException, GenericThrowable{
 		mensagem = new Mensagem();
 		clienteDao = new DAOCliente<Cliente>();
@@ -32,33 +32,35 @@ public class ClienteBean {
 		endereco.setEstado(estado);
 		estadoList();
 	}
-	
+
 	public String salvar(Cliente cliente) throws GenericException, GenericThrowable{
 		Cliente cliente_auxiliar = mensagem.mensagem(cliente);
-		if(cliente_auxiliar.equals(null)){
-			return null;
-		}else{
+		if(cliente_auxiliar.getEndereco().getNumero()==0){
+			cliente_auxiliar.getEndereco().setNumero(null);
 			clienteDao.salvar(cliente_auxiliar);
-		}
+		}else
+			{
+			clienteDao.salvar(cliente_auxiliar);
+			}
 		return null;
 	}
 	public void deletar(Cliente cliente) throws GenericException, GenericThrowable{
 		clienteDao.deletar(cliente);
 		mensagem.mensagemExclusao();
 	}
-	
+
 	public String editar(Cliente cliente) throws GenericException, GenericThrowable{
 		Cliente cliente_auxiliar = mensagem.mensagemEdicao(cliente);
-		if(cliente_auxiliar.equals(null)){
-			return null;
+		if(cliente_auxiliar.getEndereco().getNumero()==0){
+			cliente_auxiliar.getEndereco().setNumero(null);
+			clienteDao.atualizar(cliente_auxiliar);
 		}else{
-			//git teste
-			clienteDao.atualizar(cliente);
+			clienteDao.atualizar(cliente_auxiliar);
 			limparCampos();
 		}
 		return null;
 	}
-	
+
 	public void limparCampos(){
 		cliente.setClienteChave(null);
 		cliente.setNome("");
@@ -74,20 +76,23 @@ public class ClienteBean {
 		cliente.getEndereco().setCep("");
 		cliente.getEndereco().setComplemento("");
 	}
-	
+
 	public List<Cliente> listarClientes() throws GenericException, GenericThrowable{
 		return clienteDao.listar();
 	}
-	
+
 	public List<Estado> estadoList() throws GenericException, GenericThrowable{
 		return this.estados = estadoDAO.listarEstados();
 	}
-	
+
 	public String paginaEditar(){
 		return "editar.xhtml?faces-redirect=true";
 	}
 	public String paginaCadastrar(){
 		return "cadastro.xhtml?faces-redirect=true";
+	}
+	public String paginaListaClientes(){
+		return "listaClientes.xhtml?faces-redirect=true";
 	}
 	public Cliente getCliente() {
 		return cliente;

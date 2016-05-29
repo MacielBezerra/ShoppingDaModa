@@ -40,7 +40,10 @@
 						<p:inputText
 							style="margin-left:40px;background-color:white;margin-top:18px"
 							value="#{clienteBean.cliente.email}"
-							validatorMessage="Informe um email válido!">
+							requiredMessage="Há campo(s) obrigatório(s) não preenchido(s)!"
+							validatorMessage="Informe um email válido!"
+							required="true">
+								<f:validateRegex pattern="[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+"/>
 						</p:inputText>
 					</fieldset>
 					<fieldset
@@ -104,6 +107,8 @@
 					<p:commandButton value="Salvar"
 						actionListener="#{clienteBean.salvar(clienteBean.cliente)}"
 						action="listaClientes.xhtml?faces-redirect=true"
+						process="@all"
+						update="panel"
 						style="margin-left:1235px;margin-top:15px;color:white;height:40px;position:absolute;background:#FF0000">
 					</p:commandButton>
 				</h:form>

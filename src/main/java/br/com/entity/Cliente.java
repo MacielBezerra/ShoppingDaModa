@@ -34,7 +34,6 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String telefone;
 	private String celular;
-	@Pattern(regexp="[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+",message="Informe um e-mail válido!")
 	private String email;
 	
 	//gets and sets

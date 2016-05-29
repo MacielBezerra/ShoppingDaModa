@@ -1,105 +1,131 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<meta http-equiv="Content-Type" content="text/html;" />
+	<meta http-equiv="Content-Type" content="text/html;" />
 	<!-- Referenciando o arquivo CSS -->
 	<link rel="stylesheet" type="text/css"
 		href="#{facesContext.externalContext.requestContextPath}/css/growl.css" />
-</h:head> 
+</h:head>
 <h:body>
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corpo">
-				<legend style="color: red; margin-top:18px; font-size:32px; margin-left: 10px" >Edição de Cliente</legend>
-				<h:form style="margin-top:20px;">
-					<h:inputHidden id="inputHidden" value="#{clienteBean.cliente.clienteChave}" />
-					<fieldset
-							style="height:260px; margin-top:25px; border: 1px solid #DCDCDC;">
-							<legend style="color:gray; font-size:20px;">Dados Pessoais</legend>
-								<p:outputLabel value="Nome:" />
-								<p:outputLabel value="*" style="color:red" />
-								<p:inputText
-									style="margin-left:40px;background-color:white;margin-top:20px"
-									value="#{clienteBean.cliente.nome}" />
-								<br />
-								<p:outputLabel value="Telefone:" />
-								<p:outputLabel value="*" style="color:red" />
-								<p:inputMask mask="(999)99999-9999"
-									style="margin-left:20px;background-color:white;margin-top:18px"
-									value="#{clienteBean.cliente.telefone}" />
-								<br />
-								<p:outputLabel value="Celular:" />
-								<p:outputLabel value="*" style="color:red" />
-								<p:inputMask mask="(999)99999-9999"
-									style="margin-left:30px;background-color:white;margin-top:18px"
-									value="#{clienteBean.cliente.celular}" />
-								<br />
-								<p:outputLabel value="Email:" />
-								<p:outputLabel value="*" style="color:red" />
-								<p:inputText
-									style="margin-left:40px;background-color:white;margin-top:18px"
-									value="#{clienteBean.cliente.email}"
-									requiredMessage="Há campo(s) obrigatório(s) não preenchido(s)!"
-									required="true"
-									validatorMessage="Informe um e-mail válido!">	
-						 		</p:inputText>
-						 </fieldset>
-						 <fieldset
-								style="height:250px; margin-top:22px; border: 1px solid #DCDCDC;">
-								<legend style="color:gray; font-size:20px;">Endereço</legend>
-						 		<p:outputLabel style="margin-top:30px;margin-left:2px;position:absolute" value="Rua:" />
-						 		<p:inputText
-									style="margin-left:100px;background-color:white;margin-top:20px;position:absolute"
-									value="#{clienteBean.cliente.endereco.rua}">	
-						 		</p:inputText>
-								<p:outputLabel style="margin-top:68px;margin-left:2px;position:absolute" value="Número:" />
-						 		<p:inputText
-									style="margin-left:100px;background-color:white;margin-top:65px;position:absolute"
-									value="#{clienteBean.cliente.endereco.numero}">	
-						 		</p:inputText>
-								<p:outputLabel style="margin-top:115px;margin-left:2px;position:absolute" value="Bairro:" />
-						 		<p:inputText
-									style="margin-left:100px;background-color:white;margin-top:110px;position:absolute"
-									value="#{clienteBean.cliente.endereco.bairro}">	
-						 		</p:inputText>
-						 		<p:outputLabel style="margin-top:158px;margin-left:2px;position:absolute" value="Cidade:" />
-						 		<p:inputText
-									style="margin-left:100px;background-color:white;margin-top:155px;position:absolute"
-									value="#{clienteBean.cliente.endereco.cidade}">	
-						 		</p:inputText>  
-						 		<p:outputLabel style="margin-top:25px;margin-left:380px;position:absolute" value="Estado:" />
-						 		<p:outputLabel value="*" style="color:red;margin-left:440px;margin-top:26px;position:absolute"/>
-						 		<p:selectOneMenu id="estado" value="#{clienteBean.cliente.endereco.estado.chaveEstado}" style="position:absolute;margin-left:510px;margin-top:20px;width:140px">
-						 			<f:selectItem itemLabel="Selecione"/>
-						 			<f:selectItems value="#{clienteBean.estadoList()}" var="estado" itemValue="#{estado.chaveEstado}" itemLabel="#{estado.sigla}" />
-						 		</p:selectOneMenu>
-								<p:outputLabel style="margin-top:70px;margin-left:380px;position:absolute" value="CEP:" />
-						 		<p:inputText
-									style="margin-left:510px;background-color:white;margin-top:65px;position:absolute"
-									value="#{clienteBean.cliente.endereco.cep}">	
-						 		</p:inputText>
-						 		<p:outputLabel style="margin-top:115px;margin-left:380px;position:absolute" value="Complemento:" />
-						 		<p:inputText
-									style="margin-left:510px;background-color:white;margin-top:110px;position:absolute"
-									value="#{clienteBean.cliente.endereco.complemento}">	
-						 		</p:inputText>
-							</fieldset>
-					<p:commandButton value="Salvar"
-						actionListener="#{clienteBean.editar(clienteBean.cliente)}"
-						action="listaClientes.jsf?faces-redirect=true"
-						style="margin-left:1235px;margin-top:15px;color:white;height:40px;position:absolute; background:#FF0000" />
-				</h:form>
+			<legend
+				style="color: red; margin-top: 18px; font-size: 32px; margin-left: 10px">Edição
+				de Cliente</legend>
+			<h:form id="cadastro_cliente" style="margin-top:20px;">
+				<h:inputHidden id="inputHidden"
+					value="#{clienteBean.cliente.clienteChave}" />
+				<fieldset
+					style="height: 260px; margin-top: 25px; border: 1px solid #DCDCDC;">
+					<legend style="color: gray; font-size: 20px;">Dados
+						Pessoais</legend>
+					<p:outputLabel value="Nome:" />
+					<p:outputLabel value="*" style="color:red" />
+					<p:inputText
+						style="margin-left:40px;background-color:white;margin-top:20px"
+						value="#{clienteBean.cliente.nome}" />
+					<br />
+					<p:outputLabel value="Telefone:" />
+					<p:outputLabel value="*" style="color:red" />
+					<p:inputMask mask="(999)99999-9999"
+						style="margin-left:20px;background-color:white;margin-top:18px"
+						value="#{clienteBean.cliente.telefone}" />
+					<br />
+					<p:outputLabel value="Celular:" />
+					<p:outputLabel value="*" style="color:red" />
+					<p:inputMask mask="(999)99999-9999"
+						style="margin-left:30px;background-color:white;margin-top:18px"
+						value="#{clienteBean.cliente.celular}" />
+					<br />
+					<p:outputLabel value="Email:" />
+					<p:outputLabel value="*" style="color:red"/>
+					<p:inputText
+						style="margin-left:40px;background-color:white;margin-top:18px"
+						value="#{clienteBean.cliente.email}"
+						requiredMessage="Há campo(s) obrigatório(s) não preenchido(s)!"
+						validatorMessage="Informe um email válido!" 
+						required="true">						
+							<f:validateRegex pattern="[a-zA-Z0-9\\-\\_\\.]+@[a-zA-Z0-9\\-\\_\\.]+"/>
+					</p:inputText>
+				</fieldset>
+				<fieldset
+					style="height: 250px; margin-top: 22px; border: 1px solid #DCDCDC;">
+					<legend style="color: gray; font-size: 20px;">Endereço</legend>
+					<p:outputLabel
+						style="margin-top:30px;margin-left:2px;position:absolute"
+						value="Rua:" />
+					<p:inputText
+						style="margin-left:100px;background-color:white;margin-top:20px;position:absolute"
+						value="#{clienteBean.cliente.endereco.rua}">
+					</p:inputText>
+					<p:outputLabel
+						style="margin-top:68px;margin-left:2px;position:absolute"
+						value="Número:" />
+					<p:inputText
+						style="margin-left:100px;background-color:white;margin-top:65px;position:absolute"
+						value="#{clienteBean.cliente.endereco.numero}">
+					</p:inputText>
+					<p:outputLabel
+						style="margin-top:115px;margin-left:2px;position:absolute"
+						value="Bairro:" />
+					<p:inputText
+						style="margin-left:100px;background-color:white;margin-top:110px;position:absolute"
+						value="#{clienteBean.cliente.endereco.bairro}">
+					</p:inputText>
+					<p:outputLabel
+						style="margin-top:158px;margin-left:2px;position:absolute"
+						value="Cidade:" />
+					<p:inputText
+						style="margin-left:100px;background-color:white;margin-top:155px;position:absolute"
+						value="#{clienteBean.cliente.endereco.cidade}">
+					</p:inputText>
+					<p:outputLabel
+						style="margin-top:25px;margin-left:380px;position:absolute"
+						value="Estado:" />
+					<p:outputLabel value="*"
+						style="color:red;margin-left:440px;margin-top:26px;position:absolute" />
+					<p:selectOneMenu id="estado"
+						value="#{clienteBean.cliente.endereco.estado.chaveEstado}"
+						style="position:absolute;margin-left:510px;margin-top:20px;width:140px">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{clienteBean.estadoList()}" var="estado"
+							itemValue="#{estado.chaveEstado}" itemLabel="#{estado.sigla}" />
+					</p:selectOneMenu>
+					<p:outputLabel
+						style="margin-top:70px;margin-left:380px;position:absolute"
+						value="CEP:" />
+					<p:inputText
+						style="margin-left:510px;background-color:white;margin-top:65px;position:absolute"
+						value="#{clienteBean.cliente.endereco.cep}">
+					</p:inputText>
+					<p:outputLabel
+						style="margin-top:115px;margin-left:380px;position:absolute"
+						value="Complemento:" />
+					<p:inputText
+						style="margin-left:510px;background-color:white;margin-top:110px;position:absolute"
+						value="#{clienteBean.cliente.endereco.complemento}">
+					</p:inputText>
+				</fieldset>
+				<p:commandButton value="Salvar"
+					actionListener="#{clienteBean.editar(clienteBean.cliente)}"
+					action="/cadastro/listaClientes.jsf?faces-redirect=true"
+					process="@all"
+					update="panel"
+					style="margin-left:1235px;margin-top:15px;color:white;height:40px;position:absolute; background:#FF0000"/>
+			</h:form>	
 			<p:outputLabel value="*"
-					style="color:red; font-size:18px; position:absolute;margin-top:-18px;margin-left:20px;" />
-				<p:outputLabel value="( ) Campo Obrigatório!"
-					style="font-size:16px; position:absolute;margin-top:-22px;margin-left:16px;" />
-			<p:commandButton value="Cancelar" action="/cadastro/listaClientes.jsf?faces-redirect=true" 
-						style="margin-left:1115px;margin-top:14px;color:gray;height:40px;background:F0F0F0" />
+				style="color:red; font-size:18px; position:absolute;margin-top:-18px;margin-left:20px;" />
+			<p:outputLabel value="( ) Campo Obrigatório!"
+				style="font-size:16px; position:absolute;margin-top:-22px;margin-left:16px;" />
+			<p:commandButton value="Cancelar"
+				action="/cadastro/listaClientes.jsf?faces-redirect=true"
+				style="margin-left:1115px;margin-top:14px;color:gray;height:40px;background:F0F0F0" />
 		</ui:define>
 	</ui:composition>
-</h:body> 
+</h:body>
 </html>

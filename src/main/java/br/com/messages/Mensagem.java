@@ -34,7 +34,7 @@ public class Mensagem {
 				cliente.getEndereco().getEstado().getChaveEstado()==0||
 				cliente.getEndereco().getEstado().equals("")){
 			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, Config.getString("save.fail"),null));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Config.getString("save.fail"),null));
 			return null;
 		}else {
 			FacesContext context = FacesContext.getCurrentInstance();
