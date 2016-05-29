@@ -27,6 +27,9 @@ body {
     border-bottom:0px none;
     border-width: 0px;
 }
+.ui-datatable-tablewrapper{
+	margin-top: -15px;
+}
 .ui-filter-column{
 	border-color: #DCDCDC;
 }

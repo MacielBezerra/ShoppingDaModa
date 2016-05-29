@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+</h:head>
 <h:body>
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corpo">
@@ -16,7 +17,7 @@
 					<p:dataTable id="listaUsuario" paginator="true"
 						paginatorPosition="bottom" rows="5"
 						emptyMessage="Não há clientes cadastrados"
-						style="margin-top:20px; font-size:18px; font-style: none; text-align:center"
+						style="margin-top:10px; font-size:18px; font-style: none; text-align:center"
 						var="cli" value="#{clienteBean.listarClientes()}">
 						<p:column id="nome" rendered="true" headerText="Nome"
 							filterBy="#{cli.nome}" filterMatchMode="contains">
@@ -38,13 +39,13 @@
 							<h:outputText value="#{cli.endereco.estado.sigla}" />
 						</p:column>
 						<p:column headerText="Ações">
-							<p:commandButton action="#{clienteBean.paginaEditar()}"
+							<p:commandButton id="bt_editar" action="#{clienteBean.paginaEditar()}"
 								style="height:30px;width:30px;text-align:center;align:center"
 								icon="ui-icon-pencil">
-								<f:setPropertyActionListener target="#{clienteBean.cliente}"
-									value="#{cli}" />
+								<f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{cli}" />
 							</p:commandButton>
-							<p:commandButton action="#{clienteBean.deletar(cli)}"
+							<p:tooltip for="bt_editar" value="Editar" id="tooltip_excluir" style="background-color:black;border:none;color:white;position:absolute"/>
+							<p:commandButton id="bt_excluir" action="#{clienteBean.deletar(cli)}"
 								update="listaUsuario"
 								style="height:30px;width:30px;text-align:center;align:center"
 								icon="ui-icon-trash">
@@ -52,6 +53,7 @@
 									message="Você deseja realmente excluir o cliente?"
 									icon="ui-icon-alert" />
 							</p:commandButton>
+							<p:tooltip for="bt_excluir" value="Excluir" id="tooltip" style="background-color:black;border:none;color:white;position:absolute"/>
 							<p:confirmDialog global="true" showEffect="fade"
 								hideEffect="fade">
 								<p:commandButton value="Não" type="button"
