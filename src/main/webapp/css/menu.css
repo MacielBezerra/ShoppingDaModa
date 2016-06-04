@@ -11,6 +11,7 @@ body {
 }
 .ui-menuitem{
 	color: black;
+	display: block;
 }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon{
 	color: black;

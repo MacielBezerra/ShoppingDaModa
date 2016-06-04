@@ -10,6 +10,11 @@
     	<managed-bean-class>br.com.bean.ClienteBean</managed-bean-class>
     	<managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+    	<managed-bean-name>mercadoriaBean</managed-bean-name>
+    	<managed-bean-class>br.com.bean.MercadoriaBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
      <lifecycle>
       <phase-listener>br.com.messages.MultiPageMessagesSupport</phase-listener>  
     </lifecycle>
