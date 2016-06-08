@@ -4,13 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
 </h:head>
 <h:body>
-	<script language="javascript" src="javaScript/calendar.js">
-		
-	</script>
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corpo">
 			<div id="fieldset">
@@ -49,7 +45,7 @@
 							<p:outputLabel value="Marca:" style="margin-left:441px;margin-top:22px;position:absolute"/>
 							<p:inputText style="margin-left:590px;margin-top:19px;position:absolute;background-color:white"/>
 							<p:outputLabel value="Data do Cadastro:" style="margin-top:-19px;position:absolute;margin-left:440px"/>
-							<p:calendar id="data" locale="pt_BR" showOn="button" style="background-color:white; margin-top:-26px;position:absolute;margin-left:590px" />
+							<p:calendar id="data" pattern="dd/MM/yyyy" mask="true" showOn="button" locale="pt_BR" style="background-color:white; margin-top:-26px;position:absolute;margin-left:590px" />
 							<p:commandButton value="Salvar"
 								actionListener="#{clienteBean.salvar(clienteBean.cliente)}"
 								onclick="PF('dialog').show();"
