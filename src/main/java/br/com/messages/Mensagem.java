@@ -4,6 +4,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import br.com.entity.Cliente;
+import br.com.entity.Mercadoria;
 
 public class Mensagem {
 	
@@ -15,7 +16,8 @@ public class Mensagem {
 				cliente.getEndereco().getEstado().getChaveEstado()==0){
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Config.getString("save.fail"),null));
-			return null;
+			cliente.setNome("obrigatorio");
+			return cliente;
 		}else {
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Config.getString("save.sucesso"),null));
@@ -26,6 +28,11 @@ public class Mensagem {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,Config.getString("exclusao.sucesso"),null));
 	}
+	public void mensagemExclusaoMercadoria(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,Config.getString("mercadoria.exclusao.sucesso"),null));
+	}
+	
 	public Cliente mensagemEdicao(Cliente cliente){
 		if(cliente.getNome().isEmpty()||cliente.getNome().equals("")||
 				cliente.getTelefone().isEmpty()||cliente.getTelefone().equals("")||
@@ -35,11 +42,48 @@ public class Mensagem {
 				cliente.getEndereco().getEstado().equals("")){
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Config.getString("save.fail"),null));
-			return null;
+			return cliente;
 		}else {
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Config.getString("edicao.sucesso"),null));
 			return cliente;
+		}
+	}
+	
+	public Mercadoria mensagemMercadoriaSucesso(Mercadoria mercadoria){
+		if(mercadoria.getCategoria().getIdCategoria()==0||
+			mercadoria.getTamanho().getIdTamanho()==0||
+			mercadoria.getGenero().getIdGenero()==0){
+			mercadoria.setMarca("obrigatorio");
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Config.getString("save.fail"),null));
+			return mercadoria;
+		}else {
+			if(mercadoria.getValorCompra()==0.0 && mercadoria.getValorVenda()==0.0 || mercadoria.getValorCompra()==0.0 || mercadoria.getValorVenda()==0.0){
+				mercadoria.setValorCompra(null);
+				mercadoria.setValorVenda(null);
+			}
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Config.getString("save.sucesso.mercadoria"),null));
+			return mercadoria;
+		}
+	}
+	
+	public Mercadoria mensagemMercadoriaEdicao(Mercadoria mercadoria){
+		if(mercadoria.getCategoria().getIdCategoria()==0||
+			mercadoria.getTamanho().getIdTamanho()==0||
+			mercadoria.getGenero().getIdGenero()==0){
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Config.getString("save.fail"),null));
+			return mercadoria;
+		}else {
+			if(mercadoria.getValorCompra()==0.0 && mercadoria.getValorVenda()==0.0 || mercadoria.getValorCompra()==0.0 || mercadoria.getValorVenda()==0.0){
+				mercadoria.setValorCompra(null);
+				mercadoria.setValorVenda(null);
+			}
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Config.getString("mercadoria.edicao.sucesso"),null));
+			return mercadoria;
 		}
 	}
 }

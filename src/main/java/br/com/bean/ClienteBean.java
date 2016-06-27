@@ -35,14 +35,15 @@ public class ClienteBean {
 
 	public String salvar(Cliente cliente) throws GenericException, GenericThrowable{
 		Cliente cliente_auxiliar = mensagem.mensagem(cliente);
-		if(cliente_auxiliar.getEndereco().getNumero()==0){
-			cliente_auxiliar.getEndereco().setNumero(null);
-			clienteDao.salvar(cliente_auxiliar);
-		}else
-			{
-			clienteDao.salvar(cliente_auxiliar);
+		if(cliente_auxiliar.getNome().equals("obrigatorio")){
+			return "cadastro/cadastro.xhtml?faces-redirect=true";
+		}else{
+			if(cliente_auxiliar.getEndereco().getNumero()==0){
+				cliente_auxiliar.getEndereco().setNumero(null);
 			}
-		return null;
+			clienteDao.salvar(cliente_auxiliar);
+			return "listaClientes.xhtml?faces-redirect=true";
+			} 	
 	}
 	public void deletar(Cliente cliente) throws GenericException, GenericThrowable{
 		clienteDao.deletar(cliente);
@@ -51,14 +52,17 @@ public class ClienteBean {
 
 	public String editar(Cliente cliente) throws GenericException, GenericThrowable{
 		Cliente cliente_auxiliar = mensagem.mensagemEdicao(cliente);
-		if(cliente_auxiliar.getEndereco().getNumero()==0){
-			cliente_auxiliar.getEndereco().setNumero(null);
-			clienteDao.atualizar(cliente_auxiliar);
+		if(cliente_auxiliar.getNome().equals("")||cliente_auxiliar.getTelefone().equals("")||
+			cliente_auxiliar.getCelular().equals("")||cliente_auxiliar.getEmail().equals("")||
+			cliente_auxiliar.getEndereco().getEstado().getChaveEstado()==0){
+			return "cadastro/editar.xhtml?faces-redirect=true";
 		}else{
+			if(cliente_auxiliar.getEndereco().getNumero()==0){
+				cliente_auxiliar.getEndereco().setNumero(null);
+			}
 			clienteDao.atualizar(cliente_auxiliar);
-			limparCampos();
+			return "listaClientes.xhtml?faces-redirect=true";
 		}
-		return null;
 	}
 
 	public void limparCampos(){

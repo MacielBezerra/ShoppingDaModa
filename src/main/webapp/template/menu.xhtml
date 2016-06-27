@@ -3,16 +3,14 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"> 
-<h:head>
-</h:head> 
+      xmlns:p="http://primefaces.org/ui">  
 <h:body> 
 	<f:view>
 		<ui:composition>
 			<h:form>
 				<p:menubar style="min-width:1337px;">
-					<p:menuitem value="Página Inicial" action="#{clienteBean.limparCampos}" url="/template/layout.xhtml" icon="ui-icon-home">
-					</p:menuitem>
+						<p:menuitem value="Página Inicial" action="#{clienteBean.limparCampos}" actionListener="#{mercadoriaBean.limparCampos()}" url="/template/layout.xhtml" icon="ui-icon-home">
+						</p:menuitem>
 					<p:submenu label="Gerenciar Cliente" style="color:white!important;height:30px" icon="ui-icon-person">
 						<p:menuitem value="Cadastrar Cliente" actionListener="#{clienteBean.limparCampos}" action="/cadastro/cadastro.jsf?faces-redirect=true" ajax="false" id="menuitem">
 						</p:menuitem>
@@ -20,13 +18,13 @@
 						</p:menuitem>
 					</p:submenu>
 					<p:submenu label="Gerenciar Estoque" style="color:white!important;height:30px" icon="ui-icon-note">
-						<p:menuitem value="Cadastrar Mercadoria" id="mercadoria" url="/manter_estoque/cadastrar_mercadoria.xhtml">
+						<p:menuitem value="Cadastrar Mercadoria" actionListener="#{mercadoriaBean.limparCampos}" ajax="false" id="mercadoria" action="/manter_estoque/cadastrar_mercadoria.xhtml">
 						</p:menuitem>
-						<p:menuitem value="Listar Mercadorias" url="">
+						<p:menuitem value="Listar Mercadorias" url="/manter_estoque/listar_mercadoria.xhtml">
 						</p:menuitem>
 					</p:submenu>
 					<p:submenu label="Vendas" style="color:white!important;height:30px" icon="ui-icon-cart">
-						<p:menuitem value="Ralizar uma nova Venda" id="venda" url="">
+						<p:menuitem value="Ralizar uma nova venda" id="venda" url="">
 						</p:menuitem>
 					</p:submenu>
 				</p:menubar>

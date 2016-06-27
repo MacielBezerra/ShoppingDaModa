@@ -1,7 +1,6 @@
 package br.com.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,25 +16,24 @@ public class Genero implements Serializable{
 	 */
 	private static final long serialVersionUID = 4364910960482783744L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_genero")
 	private Integer idGenero;
 	@Column(name="descricao")
 	private String descricao;
 	
-	public Integer getIdGenero() {
-		return idGenero;
-	}
-	public void setIdGenero(Integer idGenero) {
-		this.idGenero = idGenero;
-	}
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+	public Integer getIdGenero() {
+		return idGenero;
+	}
+	public void setIdGenero(Integer idGenero) {
+		this.idGenero = idGenero;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

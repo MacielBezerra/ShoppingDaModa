@@ -5,8 +5,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-</h:head>
 <h:body>
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corpo">
@@ -17,7 +15,7 @@
 					<p:dataTable id="listaUsuario" paginator="true"
 						paginatorPosition="bottom" rows="5"
 						emptyMessage="Não há clientes cadastrados"
-						style="margin-top:10px; font-size:18px; font-style: none; text-align:center"
+						style="margin-top:18px; font-size:18px; font-style: none; text-align:center"
 						var="cli" value="#{clienteBean.listarClientes()}">
 						<p:column id="nome" rendered="true" headerText="Nome"
 							filterBy="#{cli.nome}" filterMatchMode="contains">

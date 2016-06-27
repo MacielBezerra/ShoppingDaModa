@@ -4,63 +4,77 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
 <h:body>
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corpo">
 			<div id="fieldset">
-				<legend style="color: red; margin-top: 18px; font-size: 32px; margin-left: 10px">Cadastro de Roupa</legend>
-				<fieldset
-					style="height: 348px; margin-top: 25px; border: 1px solid #DCDCDC;">
-					<legend style="color: gray; font-size: 20px;">Dados da Mercadoria</legend>
-					<div id="form">
-						<h:form id="cadastro_roupa" style="margin-top:20px;">
-							<p:outputLabel style="margin-top:0px" id="tipoLabel" value="Categoria:" />
-							<p:selectOneMenu style="margin-left:68px;margin-top:-2px;position:absolute" 
-							 value="#{mercadoriaBean.categoria.idCategoria}">
-								<f:selectItem itemLabel="Selecione uma categoria"/>
-								<f:selectItems value="#{mercadoriaBean.popularListaCategoria()}" var="categoria"
-								itemValue="#{categoria.idCategoria}" itemLabel="#{categoria.descricao}" />
+				<legend style="color: red; margin-top: 18px; font-size: 32px; margin-left: 10px">Cadastro de Mercadoria</legend>
+				<h:form style="margin-top:20px;">
+					<fieldset
+						style="height: 348px; margin-top: 25px; border: 1px solid #DCDCDC;">
+						<legend style="color: gray; font-size: 20px;">Dados da Mercadoria</legend>
+							<p:outputLabel style="margin-top:32px;position:absolute"  id="tipoLabel" value="Categoria:" />
+							<p:outputLabel value="*" style="color:red;position:absolute;margin-left:84px;margin-top:30px"/>
+							<p:selectOneMenu style="margin-left:150px;margin-top:28px;position:absolute" value="#{mercadoriaBean.categoria.idCategoria}">
+								<f:selectItem itemLabel="Selecione uma categoria" />
+								<f:selectItems value="#{mercadoriaBean.popularListaCategoria()}" var="categoria" itemValue="#{categoria.idCategoria}" itemLabel="#{categoria.descricao}" />
 							</p:selectOneMenu>
-							<br/>
-							<p:outputLabel style="margin-top:0px;margin-top:25px;position:absolute" id="tamanhoLabel" value="Tamanho:" />
-							<p:selectOneMenu style="margin-left:148px;margin-top:20px;position:absolute" id="tamanho">
-								<f:selectItem itemLabel="Selecione um tamanho"/>
-								<f:selectItems value="#{mercadoriaBean.popularListaTamanho()}" var="tamanho"
-								itemValue="#{tamanho.idTamanho}" itemLabel="#{tamanho.descricao}" />
+							<br />
+							<p:outputLabel style="margin-top:0px;margin-top:63px;position:absolute"
+								id="tamanhoLabel" value="Tamanho:" />
+							<p:outputLabel value="*" style="color:red;position:absolute;margin-left:82px;margin-top:60px"/>
+							<p:selectOneMenu value="#{mercadoriaBean.tamanho.idTamanho}"
+								style="margin-left:148px;margin-top:55px;position:absolute"
+								id="tamanho">
+								<f:selectItem itemLabel="Selecione um tamanho " />
+								<f:selectItems value="#{mercadoriaBean.popularListaTamanho()}"
+									var="tamanho" itemValue="#{tamanho.idTamanho}"
+									itemLabel="#{tamanho.descricao}" />
 							</p:selectOneMenu>
-							<p:outputLabel value="Gênero:" style="margin-top:70px;position:absolute"/>
-							<p:selectOneMenu style="margin-left:148px;margin-top:65px;position:absolute" id="genero">
-								<f:selectItem itemLabel="Selecione um gênero"/>
-								<f:selectItems value="#{mercadoriaBean.popularListaGenero()}" var="genero"
-								itemValue="#{genero.idGenero}" itemLabel="#{genero.descricao}" />
+							<p:outputLabel value="Gênero:"
+								style="margin-top:105px;position:absolute" />
+							<p:outputLabel value="*" style="color:red;position:absolute;margin-left:70px;margin-top:105px"/>
+							<p:selectOneMenu value="#{mercadoriaBean.genero.idGenero}"
+								style="margin-left:148px;margin-top:100px;position:absolute"
+								id="genero">
+								<f:selectItem itemLabel="Selecione um gênero " />
+								<f:selectItems value="#{mercadoriaBean.popularListaGenero()}"
+									var="genero" itemValue="#{genero.idGenero}"
+									itemLabel="#{genero.descricao}" />
 							</p:selectOneMenu>
-							<p:outputLabel value="Valor Compra:  R$" style="margin-top:115px;position:absolute"/>
-							<p:inputText style="margin-left:150px;margin-top:110px;position:absolute;background-color:white"/>
-							<p:outputLabel value="Valor Venda:  R$" style="margin-top:158px;position:absolute"/>
-							<p:inputText style="margin-left:148px;margin-top:152px;position:absolute;background-color:white"/>
-							<p:outputLabel value="Quantidade:" style="margin-top:201px;position:absolute"/>
-							<p:inputText style="margin-left:148px;margin-top:192px;position:absolute;background-color:white"/>
-							<p:outputLabel value="Marca:" style="margin-left:441px;margin-top:22px;position:absolute"/>
-							<p:inputText style="margin-left:590px;margin-top:19px;position:absolute;background-color:white"/>
-							<p:outputLabel value="Data do Cadastro:" style="margin-top:-19px;position:absolute;margin-left:440px"/>
-							<p:calendar id="data" pattern="dd/MM/yyyy" mask="true" showOn="button" locale="pt_BR" style="background-color:white; margin-top:-26px;position:absolute;margin-left:590px" />
-							<p:commandButton value="Salvar"
-								actionListener="#{clienteBean.salvar(clienteBean.cliente)}"
-								onclick="PF('dialog').show();"
-								style="margin-left:1228px;margin-top:310px;color:white; height:40px;position:absolute;background:#FF0000">
-							</p:commandButton>
-							<p:dialog widgetVar="dialog" dynamic="false" maximizable="false"
-								resizable="false" hideEffect="fade" showEffect="fade"
-								modal="true" height="70" position="center" minimizable="false"
-								draggable="false">
-								<p:messages showDetail="true" autoUpdate="true"
-									globalOnly="false" />
-							</p:dialog>
-						</h:form>
-					</div>
-				</fieldset>
+							<p:outputLabel value="Valor Compra:  R$" style="margin-top:145px;position:absolute" />
+							<p:inputText onkeypress="mascara(this,valor);" value="#{mercadoriaBean.mercadoria.valorCompra}"
+								style="margin-left:150px;margin-top:144px;position:absolute;background-color:white">
+								<f:convertNumber pattern="#,##0.00"/>
+							</p:inputText>
+							<p:outputLabel value="Valor Venda:  R$"
+								style="margin-top:193px;position:absolute" />
+							<p:inputText onkeypress="mascara(this,valor);" value="#{mercadoriaBean.mercadoria.valorVenda}"
+								style="margin-left:148px;margin-top:188px;position:absolute;background-color:white">
+								<f:convertNumber pattern="#,##0.00"/>
+							</p:inputText>
+							<p:outputLabel value="Estoque:"
+								style="margin-top:240px;position:absolute" />
+							<p:inputText onkeypress="mascara(this,mascaraNumero);" value="#{mercadoriaBean.mercadoria.estoque}"
+								style="margin-left:148px;margin-top:230px;position:absolute;background-color:white">
+								<f:convertNumber pattern="#####"/>
+							</p:inputText>
+							<p:outputLabel value="Marca:"
+								style="margin-left:441px;margin-top:58px;position:absolute" />
+							<p:inputText value="#{mercadoriaBean.mercadoria.marca}"
+								style="margin-left:590px;margin-top:52px;position:absolute;background-color:white" />
+							<p:outputLabel value="Data do Cadastro:"
+								style="margin-top:12px;position:absolute;margin-left:440px" />
+							<p:calendar id="data"
+								value="#{mercadoriaBean.mercadoria.dataCadastro}"
+								pattern="dd/MM/yyyy" mask="true" showOn="button" locale="pt_BR"
+								style="background-color:white; margin-top:5px;position:absolute;margin-left:590px" />
+					</fieldset>
+					<p:commandButton value="Salvar"
+								action="#{mercadoriaBean.salvar(mercadoriaBean.mercadoria)}"
+								style="margin-left:1241px;margin-top:15px;color:white;height:40px;position:absolute;background:#FF0000">
+					</p:commandButton>
+				</h:form>
 				<p:outputLabel value="*"
 					style="color:red; font-size:18px; position:absolute;margin-top:-20px;margin-left:20px;" />
 				<p:outputLabel value="( ) Campo Obrigatório!"
@@ -68,7 +82,7 @@
 			</div>
 			<p:commandButton value="Cancelar"
 				action="/template/layout.jsf?faces-redirect=true"
-				style="margin-left:1125px;margin-top:14px;color:gray; height:40px; background:F0F0F0" />
+				style="margin-left:1123px;margin-top:14px;color:gray; height:40px; background:F0F0F0" />
 		</ui:define>
 	</ui:composition>
 </h:body>

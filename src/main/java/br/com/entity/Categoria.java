@@ -17,23 +17,23 @@ public class Categoria implements Serializable{
 	private static final long serialVersionUID = -2552548940084876893L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_categoria")
 	private Integer idCategoria;
 	@Column(name="descricao")
 	private String descricao;
 	
-	public Integer getIdCategoria() {
-		return idCategoria;
-	}
-	public void setIdCategoria(Integer idCategoria) {
-		this.idCategoria = idCategoria;
-	}
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public Integer getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 	@Override
 	public int hashCode() {

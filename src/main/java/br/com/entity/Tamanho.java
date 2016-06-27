@@ -17,25 +17,24 @@ public class Tamanho implements Serializable{
 	private static final long serialVersionUID = -4144948556454166573L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_tamanho")
 	private Integer idTamanho;
 	@Column(name="descricao")
 	private String descricao;
 	
-	public Integer getIdTamanho() {
-		return idTamanho;
-	}
-	public void setIdTamanho(Integer idTamanho) {
-		this.idTamanho = idTamanho;
-	}
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+	public Integer getIdTamanho() {
+		return idTamanho;
+	}
+	public void setIdTamanho(Integer idTamanho) {
+		this.idTamanho = idTamanho;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -46,7 +45,6 @@ public class Tamanho implements Serializable{
 				+ ((idTamanho == null) ? 0 : idTamanho.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,5 +65,5 @@ public class Tamanho implements Serializable{
 		} else if (!idTamanho.equals(other.idTamanho))
 			return false;
 		return true;
-	} 
+	}
 }

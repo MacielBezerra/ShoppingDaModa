@@ -7,9 +7,12 @@
 		<!-- Mapeamento das entidades -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.entity.Cliente</class>
+		<class>br.com.entity.Categoria</class>
 		<class>br.com.entity.Endereco</class>
 		<class>br.com.entity.Estado</class>
-		<class>br.com.entity.Categoria</class>
+		<class>br.com.entity.Genero</class>
+		<class>br.com.entity.Mercadoria</class>
+		<class>br.com.entity.Tamanho</class>
 		<!-- configuração da conexao com banco mysql -->
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

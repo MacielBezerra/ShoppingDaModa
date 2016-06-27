@@ -23,7 +23,7 @@ public abstract class DAOAbstract<T> extends FactoryConnection implements IDAOGe
 			em.persist(objeto);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			throw new GenericException(Config.getString("erro.salvar")+ objeto.getClass()+ e.getMessage());
+			e.printStackTrace();
 		}finally{
 			try {
 				if(em.isOpen()){
